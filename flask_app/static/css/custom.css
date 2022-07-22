@@ -1,3 +1,19 @@
 .maintitle{
-    font-size: 100px;
+    font-size:100px;
+}
+
+.mainborder{
+    border-radius: 25px;
+}
+
+.main-bg-color{
+    background-color: blueviolet;
+}
+
+.main-color{
+    color: blueviolet;
+}
+
+.main-container{
+    height: 100%;
 }

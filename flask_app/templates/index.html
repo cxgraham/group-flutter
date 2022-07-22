@@ -6,19 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href='C:\Users\antho\OneDrive\Bootcamp\Group Project - Flutter\group-flutter\flask_app\static\bootstrap\css\bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" href='C:\Users\antho\OneDrive\Bootcamp\Group Project - Flutter\group-flutter\flask_app\static\css\custom.css'>
+
 
 
 </head>
 <body>
-    <div class="container-fluid text-dark p-2">
-        <div class="row text-center mt-2 maintitle"><h1>Flutter</h1></div>
-        <div class="row text-center"><h4 class="bio40">Better Than Twitter :)</h2></div>
+    <div class="container-fluid text-dark p-2 main-bg-color vh-100">
+        <div class="row text-center mt-2"><h1 class="maintitle text-white">Flutter</h1></div>
+        <div class="row text-center"><h2 class="text-white">Better Than Twitter :)</h2></div>
         <div class="row ">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4 bg-white border border-dark border-3 rounded mt-2 pb-2">
-                <h2 class="bio m-3 text-center">Login Here</h2>
+            <div class="col-sm-4 bg-white border mt-2 pb-2 mainborder">
+                <h4 class="bio m-3 text-center main-color">Login Here</h4>
 <!--            FLASHED MESSAGES HIDDEN FOR NOW, DELETE THIS LINE WHEN UNHIDDEN
                 <div>
                     {% with loginmessage = get_flashed_messages(category_filter=["loginmessage"])  %}
@@ -32,22 +35,24 @@
                  -->
                     <form action="/login" method="post">
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email:</label>
+                        <label for="email" class="form-label main-color">Email:</label>
                         <input type="text" class="form-control" name = 'email' id='email'>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password:</label>
+                        <label for="password" class="form-label main-color">Password:</label>
                         <input type="password" class="form-control" name = 'password' id='password'>
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <button type="submit" class="btn btn-dark mb-md-2 mt-2">Login</button>
+                            <button type="submit" class="btn main-bg-color text-white mb-md-2 mt-2">Login</button>
                         </div>
                     </div>
                     
                     
                 </form>
-                <a class="gray" href="/register">Not member. Click here</a>
+                <div class="row">
+                <a class="gray text-center" href="/register">Not member. Click here</a>
+                </div>
             </div>
             <div class="col-sm-4"></div>
         </div>
