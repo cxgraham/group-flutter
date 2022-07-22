@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Registration Page</title>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
@@ -14,27 +14,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BioRhyme&display=swap" rel="stylesheet">
-
 </head>
+
 <body>
-    <div class="container bg-light text-dark p-2">
+    <div class="container bg-light text-dark p-sm-2">
         <div class="row text-center mt-2"><h2 class="largelogo">What To Wear</h2></div>
-        <div class="row text-center"><h4 class="bio40">Your personal closet organizer</h2></div>
-        <div class="row text-center"><h4 class="bio40">and outfit creator</h2></div>
-        <div class="row ">
+        <div class="row text-center mb-4"><h4 class="bio40">Registration Page</h2></div>
+        <div class="row mb-2">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4 border border-dark border-3 rounded mt-2 pb-2">
-                <h2 class="bio m-3 text-center">Login Here</h2>
+            <div class="col-sm-4">
                 <div>
-                    {% with loginmessage = get_flashed_messages(category_filter=["loginmessage"])  %}
-                        {% if loginmessage %}
-                            {% for message in loginmessage %}
-                                <p class="bg-dark text-light rounded-3 p-2">{{message}}</p>
-                            {% endfor %}
-                        {% endif %}
-                    {% endwith %}
-                    </div>
-                <form action="/login" method="post">
+                    {% with error = get_flashed_messages(category_filter=["error"])  %}
+                        {% if error %}
+                            {% for message in error %}
+                            <p class="bg-dark text-light rounded-3 p-2">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                </div>
+                <form action="/process" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email:</label>
                         <input type="text" class="form-control" name = 'email' id='email'>
@@ -43,13 +41,18 @@
                         <label for="password" class="form-label">Password:</label>
                         <input type="password" class="form-control" name = 'password' id='password'>
                     </div>
-                    <button type="submit" class="btn btn-dark mb-md-2 mt-2">Login</button>
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">Confirm Password:</label>
+                        <input type="password" class="form-control" name = 'confirm_password' id='confirm_password'>
+                    </div>
+                    <button type="submit" class="btn btn-dark mb-md-3 mt-2">Register</button>
                 </form>
-                <a class="gray" href="/register">Not member. Click here</a>
+                <a class="gray" href="/">Already a member. Click here</a>
             </div>
             <div class="col-sm-4"></div>
         </div>
     </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 

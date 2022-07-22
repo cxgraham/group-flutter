@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wardrobe</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!-- BioRhyme Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme&display=swap" rel="stylesheet">
+    <!-- PlayFair Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    
+
+</head>
+<body>
+    <div class="container border border-dark rounded-3 text-dark p-sm-2">
+        <div class="row">
+            <div class="col-sm-2">
+                <h1 class="logo">What to Wear</h1>
+            </div>
+            <div class="col-sm-8 text-center">
+                <h1 class="text-dark m-3 play">Welcome {{userinfo.first_name}}</h1>
+            </div>
+            <div class="row">
+                <div class="col-2 justify-content-start ">
+                    <ul class="nav nav-tabs flex-column bg-dark rounded-3">
+                        <li class="nav-item">
+                            <a class="nav-link bg-dark text-light" aria-current="page" href="/wardrobe">My Wardrobe</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Outfits</a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/myoutfits">My Outfits</a></li>
+                                <li><a class="dropdown-item" href="/createoutfit">Create an Outfit</a></li>
+                                <!-- <li><a class="dropdown-item" href="/editoutfit">Edit an Outfit</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Items</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/showitem">My Items</a></li>
+                                <li><a class="dropdown-item" href="/additem">Add a New Item</a></li>
+                                <!-- <li><a class="dropdown-item" href="/edititem">Edit an Item</a></li> -->
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/randomize">Randomize!</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/myprofile">My Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="/logout">Log Out</a>
+                        </li>
+                    </ul>
+                    <img src="{{url_for('static', filename='img/black-closet.jpg')}}" class="img-thumbnail border-white" alt="closet"> 
+                </div>
+                
+                <div class="col-sm-8">
+                    <div>
+                        {% with congrats = get_flashed_messages(category_filter=["congrats"])  %}
+                            {% if congrats %}
+                                {% for message in congrats %}
+                                <p class="bg-dark text-light rounded-3 p-2">{{message}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                        <img src="{{url_for('static', filename='img/open-wardrobe.jpg')}}" class="img-thumbnail border-white" alt="closet"> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+</body>
+</html>
