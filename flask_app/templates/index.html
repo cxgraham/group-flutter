@@ -12,14 +12,14 @@
 
 </head>
 <body>
-    <div class="container bg-light text-dark p-2">
-        <div class="row text-center mt-2"><h2 class="largelogo">What To Wear</h2></div>
-        <div class="row text-center"><h4 class="bio40">Your personal closet organizer</h2></div>
-        <div class="row text-center"><h4 class="bio40">and outfit creator</h2></div>
+    <div class="container-fluid text-dark p-2">
+        <div class="row text-center mt-2 maintitle"><h1>Flutter</h1></div>
+        <div class="row text-center"><h4 class="bio40">Better Than Twitter :)</h2></div>
         <div class="row ">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4 border border-dark border-3 rounded mt-2 pb-2">
+            <div class="col-sm-4 bg-white border border-dark border-3 rounded mt-2 pb-2">
                 <h2 class="bio m-3 text-center">Login Here</h2>
+<!--            FLASHED MESSAGES HIDDEN FOR NOW, DELETE THIS LINE WHEN UNHIDDEN
                 <div>
                     {% with loginmessage = get_flashed_messages(category_filter=["loginmessage"])  %}
                         {% if loginmessage %}
@@ -29,7 +29,8 @@
                         {% endif %}
                     {% endwith %}
                     </div>
-                <form action="/login" method="post">
+                 -->
+                    <form action="/login" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email:</label>
                         <input type="text" class="form-control" name = 'email' id='email'>
@@ -38,7 +39,13 @@
                         <label for="password" class="form-label">Password:</label>
                         <input type="password" class="form-control" name = 'password' id='password'>
                     </div>
-                    <button type="submit" class="btn btn-dark mb-md-2 mt-2">Login</button>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-dark mb-md-2 mt-2">Login</button>
+                        </div>
+                    </div>
+                    
+                    
                 </form>
                 <a class="gray" href="/register">Not member. Click here</a>
             </div>
