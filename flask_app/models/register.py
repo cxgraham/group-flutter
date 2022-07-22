@@ -7,7 +7,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 from flask_bcrypt import Bcrypt 
 bcrypt = Bcrypt(app) 
 
-db = 'w2w'
+db =  'flutter_schema' #temporary database name for now, actual name TBD
 
 class Register:
     def __init__(self, data):
@@ -15,7 +15,7 @@ class Register:
         self.email = data['email']
         self.password = data['password']
 
-    @classmethod
+    @classmethod #adds new user email and password to the database
     def new_user(cls, data):
         print("*******", data)
         query = """INSERT INTO users (email, password)
@@ -25,8 +25,8 @@ class Register:
         print (result)
         return result
 
-    @staticmethod #fix password validate: 1234567890 works
-    def validate(newuser):
+    @staticmethod #user email and password validations
+    def validate(newuser): #fix password validate: 1234567890 works
         is_valid = True
         #email null
         if len(newuser['email'])<1:
@@ -51,8 +51,8 @@ class Register:
             is_valid = False
         return is_valid
 
-    @staticmethod
-    def parsed_data(data):
+    @staticmethod 
+    def parsed_data(data): #data parsed after validation to save into database
         parsed_data = {}
         parsed_data['email'] = data['email'].lower()
         parsed_data['password'] = bcrypt.generate_password_hash(data['password'])

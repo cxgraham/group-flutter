@@ -3,7 +3,7 @@ from flask_app import app
 from flask_app.config.mysqlconnection import connectToMySQL
 from datetime import date
 
-db = 'w2w'
+db = 'flutter_schema' #temporary database name for now, actual name TBD
 
 class Profile:
     def __init__(self, data):
@@ -11,14 +11,14 @@ class Profile:
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.birthday = data['birthday']
-        self.country = data['country']
+        self.username = data['username'] #added username for profile and queries, which data ultimately goes to profile and user TBD
         self.user_id = data['user_id']
 
     @classmethod  #new profile maker 
     def new_profile(cls, data):
         print("*******", data)
-        query = """INSERT INTO profiles (first_name, last_name, birthday, country, user_id)
-                VALUES (%(first_name)s, %(last_name)s, %(birthday)s, %(country)s, %(user_id)s);
+        query = """INSERT INTO profiles (first_name, last_name, birthday, username, user_id)
+                VALUES (%(first_name)s, %(last_name)s, %(birthday)s, %(username)s, %(user_id)s);
                 """
         result = connectToMySQL(db).query_db(query,data)
         print (result)
@@ -37,7 +37,7 @@ class Profile:
 
     @classmethod #edit profile
     def edit_my_profile(cls,data):
-        query = """UPDATE profiles SET first_name= %(first_name)s, last_name = %(last_name)s, birthday = %(birthday)s, country= %(country)s
+        query = """UPDATE profiles SET first_name= %(first_name)s, last_name = %(last_name)s, birthday = %(birthday)s, username= %(username)s
                     WHERE id = %(user_id)s;""" #note: this is the profile ID passed through the userinfo obj in editprofile.html
         result = connectToMySQL(db).query_db(query,data)
         print(result)
