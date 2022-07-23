@@ -23,7 +23,7 @@ def login():
         flash("Invalid Email/Password.", "loginmessage")
         return redirect ('/')
     session['user_id'] = user_in_db.id #if everything good then user_id is in session for use in other places
-    return redirect ('/wardrobe')
+    return redirect ('/main')
     
 @app.route('/register') #registration page
 def register():
@@ -64,6 +64,8 @@ def myprofile():
     data = {'user_id' : session['user_id']}
     userinfo = Profile.get_profile_by_id(data)
     return render_template ('myprofile.html', userinfo =userinfo)
+
+
 @app.route('/editprofile') #edit profile page
 def editprofile():
     if 'user_id' not in session:
