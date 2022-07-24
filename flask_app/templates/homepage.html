@@ -74,8 +74,21 @@
         </nav>
 
         <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5 pt-5">
+        <div id="content" class="p-4 p-md-5 pt-5 ">
             <h2 class="mb-4 text-center">Welcome to Flutter!</h2>
+
+
+            {% for post in allPosts %}
+            <div class="card mx-auto" style="width: 40rem;">
+                <img class="card-img-top" src="image url??????" alt="File upload image url - Need help with this">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.name}}</h5>
+                    <p class="card-text">{{post.content}}</p>
+                    <a href="#" class="btn btn-info">Maybe a link to creators profile?</a>
+                </div>
+            </div>
+            {% endfor %}
+
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
