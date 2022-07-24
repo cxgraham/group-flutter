@@ -1,4 +1,4 @@
-from asyncio.windows_events import NULL
+# from asyncio.windows_events import NULL
 from flask import flash, request, session
 from flask_app import app
 from flask_app.config.mysqlconnection import connectToMySQL
@@ -21,9 +21,10 @@ class Register:
         query = """INSERT INTO users (email, password)
                 VALUES (%(email)s, %(password)s);
                 """
-        result = connectToMySQL(db).query_db(query,data)
-        print (result)
-        return result
+        user_id = connectToMySQL(db).query_db(query,data)
+        print (user_id)
+        session['user_id'] = user_id
+        return user_id
 
     @staticmethod #user email and password validations
     def validate(newuser): #fix password validate: 1234567890 works

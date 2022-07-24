@@ -88,8 +88,8 @@ def main():
     if 'user_id' not in session:
         flash("Please log back in")
         return redirect ('/')
-    data = {'user_id' : session['user_id']}
-    userinfo = Profile.get_profile_by_id(data) #userinfor can be changed to profile info if you want
+    # data = {'user_id' : session['user_id']}
+    userinfo = Profile.get_profile_by_id(session['user_id']) #userinfor can be changed to profile info if you want
     session['profile_id'] = userinfo.id
     return render_template ('main.html', userinfo =userinfo)
 
