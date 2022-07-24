@@ -47,13 +47,12 @@ def process():
 def profile():
     return render_template ('createprofile.html')
 
-@app.route('/createprofile', methods = ['post']) #profile creation method
-def createprofile():
+@app.route('/createnewprofile', methods = ['post']) #profile creation method
+def createnewprofile():
     if not Profile.validate(request.form):
         return redirect ('/createprofile')
     data = Profile.parsed_data(request.form)
     newprofile = Profile.new_profile(data)
-    flash("Congrats! Get started by adding items. Then when you have a few begin making your outfit sets.", "congrats")
     return redirect ('/homepage') #direct to main page, need to add user id to the url
 
 @app.route('/myprofile') #page for user to see their profile
@@ -63,6 +62,7 @@ def myprofile():
         return redirect ('/') #userinfor can be changed to profile info if you want
     data = {'user_id' : session['user_id']}
     userinfo = Profile.get_profile_by_id(data)
+    print("@@@@@@@@@@", userinfo)
     return render_template ('myprofile.html', userinfo =userinfo)
 
 @app.route('/editprofile') #edit profile page
