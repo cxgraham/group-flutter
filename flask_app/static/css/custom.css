@@ -17,3 +17,8 @@
 .main-container{
     height: 100%;
 }
+
+.profiletextbox{
+    width:100%;
+    border-color: blueviolet;
+}
