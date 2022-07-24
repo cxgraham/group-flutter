@@ -13,8 +13,8 @@
 <body>
     <div class="container bg-light text-dark p-sm-2">
         <div class="row ">
-            <div class="row text-center"><h2 class="largelogo">What To Wear</h2></div>
-            <div class="row text-center"><h4 class="bio40">Make Your Profile</h2></div>
+            <div class="row text-center"><h2 class="largelogo">Flutter</h2></div>
+            <div class="row text-center"><h4 class="bio40">Create Your Profile</h2></div>
             <div class="col-sm-4"></div>
             <div class="col-sm-4 mt-2">
                 <div>
@@ -36,11 +36,15 @@
                         <input type="text" class="form-control" name = 'last_name' id='last_name'>
                     </div>
                     <div class="mb-3">
-                        <label for="birthday" class="form-label">birthday:</label>
+                        <label for="username" class="form-label">Username:</label>
+                        <input type="text" class="form-control" name = 'username' id='username'>
+                    </div>
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Birthday:</label>
                         <input type="date" class="form-control" name = 'birthday' id='birthday'>
                     </div>
                     <div class="mb-3">
-                        <label for="country" class="form-label">Country of Residence:</label>
+                        <label for="country" class="form-label">Location:</label>
                         <input type="text" class="form-control" name = 'country' id='country'>
                         <input type="hidden" name="user_id" value="{{session.user_id}}">
                     </div>

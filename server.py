@@ -1,4 +1,4 @@
-from flask_app.controllers import #controllers names go here
+from flask_app.controllers import login_register
 from flask_app import app
 
 
