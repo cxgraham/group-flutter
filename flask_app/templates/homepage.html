@@ -61,12 +61,12 @@
 
                 <div class="mb-5">
                     
-                    <form action="#" class="colorlib-subscribe-form">
+                    
                         <div class="form-group d-flex">
                             <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="button" class="form-control bg-success" value="Post" />
+                            <a href="/posts/create"><input type="button" class="form-control bg-success px-5 ml-4" value="Post"/></a>
                         </div>
-                    </form>
+                    
                 </div>
 
                 <div class="footer"></div>
@@ -194,7 +194,7 @@
                 </div>
                 
                 <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img src="{{url_for('static', filename='')}}" class="img rounded-circle mx-4" /><div>{{userinfo.first_name}} {{userinfo.last_name}}</div> <br> {{userinfo.username}} </a>
+                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img src="{{url_for('static', filename='')}}" class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
                     </div >
 
                 
