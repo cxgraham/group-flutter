@@ -23,7 +23,7 @@ class Register:
                 """
         user_id = connectToMySQL(db).query_db(query,data)
         print (user_id)
-        session['user_id'] = user_id
+        session['user_id'] = user_id # set created user to session
         return user_id
 
     @staticmethod #user email and password validations

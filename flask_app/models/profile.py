@@ -32,8 +32,7 @@ class Profile:
                     WHERE users.id = %(user_id)s;"""
         print("$$$$$$", query)
         result = connectToMySQL(db).query_db(query,data)
-        print (cls(result[0]))
-        return (cls(result[0]))
+        return result
 
     @classmethod #edit profile
     def edit_my_profile(cls,data):
@@ -73,8 +72,9 @@ class Profile:
         parsed_data['first_name'] = data['first_name']
         parsed_data['last_name'] = data['last_name']
         parsed_data['birthday'] = data['birthday']
+        parsed_data['username'] = data['username']
         parsed_data['country'] = data['country']
         parsed_data['user_id'] = data['user_id']
-        return parsed_data        
+        return parsed_data
 
 
