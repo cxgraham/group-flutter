@@ -8,18 +8,19 @@ db = 'flutter_schema' #temporary database name for now, actual name TBD
 class Profile:
     def __init__(self, data):
         self.id = data['id']
+        self.username = data['username'] #added username for profile and queries, which data ultimately goes to profile and user TBD
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.birthday = data['birthday']
-        self.username = data['username'] #added username for profile and queries, which data ultimately goes to profile and user TBD
         self.bio = data['bio']
+        self.country = data['country']
         self.user_id = data['user_id']
 
     @classmethod  #new profile maker 
     def new_profile(cls, data):
         print("*******", data)
-        query = """INSERT INTO profiles (first_name, last_name, birthday, username, bio, user_id)
-                VALUES (%(first_name)s, %(last_name)s, %(birthday)s, %(username)s, %(bio)s, %(user_id)s);
+        query = """INSERT INTO profiles (first_name, last_name, birthday, username, bio, country, user_id)
+                VALUES (%(first_name)s, %(last_name)s, %(birthday)s, %(username)s, %(bio)s, %(country)s, %(user_id)s);
                 """
         result = connectToMySQL(db).query_db(query,data)
         print (result)
@@ -72,6 +73,7 @@ class Profile:
         parsed_data = {}
         parsed_data['first_name'] = data['first_name']
         parsed_data['last_name'] = data['last_name']
+        parsed_data['username'] = data['username'] 
         parsed_data['birthday'] = data['birthday']
         parsed_data['username'] = data['username']
         parsed_data['bio'] = data['bio']
