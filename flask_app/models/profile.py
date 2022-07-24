@@ -12,14 +12,15 @@ class Profile:
         self.first_name = data['first_name']
         self.last_name = data['last_name']
         self.birthday = data['birthday']
+        self.bio = data['bio']
         self.country = data['country']
         self.user_id = data['user_id']
 
     @classmethod  #new profile maker 
     def new_profile(cls, data):
         print("*******", data)
-        query = """INSERT INTO profiles (first_name, last_name, username, birthday, country, user_id)
-                VALUES (%(first_name)s, %(last_name)s, %(username)s, %(birthday)s, %(country)s, %(user_id)s);
+        query = """INSERT INTO profiles (first_name, last_name, birthday, username, bio, country, user_id)
+                VALUES (%(first_name)s, %(last_name)s, %(birthday)s, %(username)s, %(bio)s, %(country)s, %(user_id)s);
                 """
         result = connectToMySQL(db).query_db(query,data)
         print (result)
@@ -27,18 +28,17 @@ class Profile:
 
     @classmethod #get user's profile
     def get_profile_by_id(cls, data):
-        print("*********", data)
+        print("*********", data) 
         query = """SELECT * from profiles
-                    LEFT JOIN users on users.id = profiles.user_id
+                    LEFT JOIN users on users.id = profiles.user_id 
                     WHERE users.id = %(user_id)s;"""
-        print("$$$$$$", query)
+        print("$$$$$$", query) 
         result = connectToMySQL(db).query_db(query,data)
-        print (cls(result[0]))
-        return (cls(result[0]))
+        return result
 
     @classmethod #edit profile
     def edit_my_profile(cls,data):
-        query = """UPDATE profiles SET first_name= %(first_name)s, last_name = %(last_name)s, birthday = %(birthday)s, username= %(username)s
+        query = """UPDATE profiles SET first_name= %(first_name)s, last_name = %(last_name)s, birthday = %(birthday)s, username= %(username)s, bio %(bio)s
                     WHERE id = %(user_id)s;""" #note: this is the profile ID passed through the userinfo obj in editprofile.html
         result = connectToMySQL(db).query_db(query,data)
         print(result)
@@ -75,8 +75,10 @@ class Profile:
         parsed_data['last_name'] = data['last_name']
         parsed_data['username'] = data['username'] 
         parsed_data['birthday'] = data['birthday']
+        parsed_data['username'] = data['username']
+        parsed_data['bio'] = data['bio']
         parsed_data['country'] = data['country']
         parsed_data['user_id'] = data['user_id']
-        return parsed_data        
+        return parsed_data
 
 

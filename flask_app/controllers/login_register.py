@@ -23,7 +23,7 @@ def login():
         flash("Invalid Email/Password.", "loginmessage")
         return redirect ('/')
     session['user_id'] = user_in_db.id #if everything good then user_id is in session for use in other places
-    return redirect ('/main')
+    return redirect ('/homepage')
     
 @app.route('/register') #registration page
 def register():
@@ -54,7 +54,7 @@ def createprofile():
     data = Profile.parsed_data(request.form)
     newprofile = Profile.new_profile(data)
     flash("Congrats! Get started by adding items. Then when you have a few begin making your outfit sets.", "congrats")
-    return redirect ('/main') #direct to main page, need to add user id to the url
+    return redirect ('/homepage') #direct to main page, need to add user id to the url
 
 @app.route('/myprofile') #page for user to see their profile
 def myprofile():
@@ -64,7 +64,6 @@ def myprofile():
     data = {'user_id' : session['user_id']}
     userinfo = Profile.get_profile_by_id(data)
     return render_template ('myprofile.html', userinfo =userinfo)
-
 
 @app.route('/editprofile') #edit profile page
 def editprofile():
@@ -85,15 +84,15 @@ def editmyprofile():
 
 #login-register-profile works!
 
-@app.route('/main') #direct to main page, need to add user id to the url
+@app.route('/homepage') #direct to main page, need to add user id to the url
 def main():
     if 'user_id' not in session:
         flash("Please log back in")
         return redirect ('/')
-    data = {'user_id' : session['user_id']}
+    data = {'user_id': session['user_id']}
     userinfo = Profile.get_profile_by_id(data) #userinfor can be changed to profile info if you want
-    session['profile_id'] = userinfo.id
-    return render_template ('main.html', userinfo =userinfo)
+    session['profile_id'] = session['user_id']
+    return render_template ('homepage.html', userinfo = userinfo)
 
 @app.route('/logout')
 def logout():
