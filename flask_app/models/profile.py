@@ -14,6 +14,7 @@ class Profile:
         self.birthday = data['birthday']
         self.bio = data['bio']
         self.user_id = data['user_id']
+        self.idfriend = data["idfriend"]
 
     @classmethod  #new profile maker 
     def new_profile(cls, data):

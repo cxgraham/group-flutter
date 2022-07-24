@@ -16,6 +16,42 @@ CREATE SCHEMA IF NOT EXISTS `flutter_schema` DEFAULT CHARACTER SET utf8 ;
 USE `flutter_schema` ;
 
 -- -----------------------------------------------------
+-- Table `flutter_schema`.`friends`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `flutter_schema`.`friends` (
+  `idfriend` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`idfriend`),
+  INDEX `fk_friends_users1_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_friends_users1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `flutter_schema`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `flutter_schema`.`users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `flutter_schema`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NULL,
+  `password` VARCHAR(255) NULL,
+  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `friends_idfriends` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_users_friends1_idx` (`friends_idfriends` ASC) VISIBLE,
+  CONSTRAINT `fk_users_friends1`
+    FOREIGN KEY (`friends_idfriends`)
+    REFERENCES `flutter_schema`.`friends` (`idfriend`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `flutter_schema`.`posts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `flutter_schema`.`posts` (
@@ -84,11 +120,13 @@ CREATE TABLE IF NOT EXISTS `flutter_schema`.`profiles` (
   `birthday` DATE NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `like_id` INT NOT NULL,
-  `share_id` INT NOT NULL,
+  `like_id` INT NULL DEFAULT NULL,
+  `share_id` INT NULL DEFAULT NULL,
+  `user_id` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_profiles_likes1_idx` (`like_id` ASC) VISIBLE,
   INDEX `fk_profiles_shares1_idx` (`share_id` ASC) VISIBLE,
+  INDEX `fk_profiles_users1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_profiles_likes1`
     FOREIGN KEY (`like_id`)
     REFERENCES `flutter_schema`.`likes` (`id`)
@@ -98,25 +136,10 @@ CREATE TABLE IF NOT EXISTS `flutter_schema`.`profiles` (
     FOREIGN KEY (`share_id`)
     REFERENCES `flutter_schema`.`shares` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `flutter_schema`.`users`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `flutter_schema`.`users` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(255) NULL,
-  `password` VARCHAR(255) NULL,
-  `profile_id` INT NOT NULL,
-  `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  INDEX `fk_users_profiles_idx` (`profile_id` ASC) VISIBLE,
-  CONSTRAINT `fk_users_profiles`
-    FOREIGN KEY (`profile_id`)
-    REFERENCES `flutter_schema`.`profiles` (`id`)
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_profiles_users1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `flutter_schema`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
