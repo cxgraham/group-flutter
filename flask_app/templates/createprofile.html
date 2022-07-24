@@ -44,6 +44,10 @@
                         <input type="text" class="form-control" name = 'username' id='username'>
                     </div>
                     <div class="mb-3">
+                        <label for="bio" class="form-label">Bio:</label>
+                        <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="mb-3">
                         <label for="country" class="form-label">Country of Residence:</label>
                         <input type="text" class="form-control" name = 'country' id='country'>
                         <input type="hidden" name="user_id" value="{{session.user_id}}">
