@@ -2072,7 +2072,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
+  background-color: var(--purple);
   border-color: #007bff; }
   .btn-primary:hover {
     color: #fff;
@@ -8275,7 +8275,7 @@ h1, h2, h3, h4, h5,
           border-color: transparent !important; }
 
 #friendButton {
-  background-color: #fff;
+  background-color: var(--purple);
 }
 
 a[data-toggle="collapse"] {

@@ -2070,9 +2070,14 @@ a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none; }
 
+  #editButton{
+    color: black;
+    background-color: var(--purple);
+  }
+
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
+  background-color:var(--purple);
   border-color: #007bff; }
   .btn-primary:hover {
     color: #fff;
