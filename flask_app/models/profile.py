@@ -26,11 +26,11 @@ class Profile:
 
     @classmethod #get user's profile
     def get_profile_by_id(cls, data):
-        print("*********", data)
+        print("*********", data) 
         query = """SELECT * from profiles
-                    LEFT JOIN users on users.id = profiles.user_id
+                    LEFT JOIN users on users.id = profiles.user_id 
                     WHERE users.id = %(user_id)s;"""
-        print("$$$$$$", query)
+        print("$$$$$$", query) 
         result = connectToMySQL(db).query_db(query,data)
         return result
 

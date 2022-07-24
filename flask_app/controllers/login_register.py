@@ -91,8 +91,8 @@ def main():
         return redirect ('/')
     data = {'user_id': session['user_id']}
     userinfo = Profile.get_profile_by_id(data) #userinfor can be changed to profile info if you want
-    session['profile_id'] = userinfo
-    return render_template ('homepage.html', userinfo =userinfo)
+    session['profile_id'] = session['user_id']
+    return render_template ('homepage.html', userinfo = userinfo)
 
 @app.route('/logout')
 def logout():
