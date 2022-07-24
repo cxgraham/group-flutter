@@ -40,11 +40,11 @@ CREATE TABLE IF NOT EXISTS `flutter_schema`.`users` (
   `password` VARCHAR(255) NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-  `friends_idfriends` INT NOT NULL,
+  `idfriend` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_users_friends1_idx` (`friends_idfriends` ASC) VISIBLE,
+  INDEX `fk_users_friends1_idx` (`idfriend` ASC) VISIBLE,
   CONSTRAINT `fk_users_friends1`
-    FOREIGN KEY (`friends_idfriends`)
+    FOREIGN KEY (`idfriend`)
     REFERENCES `flutter_schema`.`friends` (`idfriend`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
