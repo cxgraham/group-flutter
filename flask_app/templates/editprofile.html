@@ -116,7 +116,7 @@
                 <h4 class="text-center mt-4 mb-2">Your Profile Picture</h4>
                 <form action="/uploadprofilepic" method="post" enctype="multipart/form-data">
                         {%if userinfo.profilepic%}
-                        <img class="img-fluid rounded mx-auto d-block" src="{{url_for('static', filename=userinfo.profilepic)}}" alt="{{userinfo.first_name}} {{userinfo.last_name}}">
+                        <img class="img-fluid rounded mx-auto d-block" src="{{url_for('static', filename='/userinfo.profilepic')}}" alt="{{userinfo.first_name}} {{userinfo.last_name}}">
                         {%else%}
                         <h6 class="text-center text-dark">No picture uploaded</h6>
                         {%endif%}
@@ -159,7 +159,7 @@
                 </div>
                 
                 <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img class="img-thumbnail profilepic-icon" src="{{url_for('static', filename=userinfo.profilepic)}}" class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
+                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img class="img-thumbnail profilepic-icon" src='{{url_for("static", filename="{}".format(userinfo.profilepic))}}' class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
                     </div >
 
                 
