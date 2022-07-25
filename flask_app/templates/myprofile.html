@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
 </head>
 
 <body>
@@ -81,7 +82,7 @@
                 <div class="my-3"><span class="font-weight-bold">Username:</span> {{userinfo.username}}</div>
                 <div class="my-3"><span class="font-weight-bold">Name:</span> {{userinfo.first_name}} {{userinfo.last_name}}</div>
                 <div class="my-3"><span class="font-weight-bold">Birthday:</span> {{userinfo.birthday}}</div>
-                <div class="my-3"><span class="font-weight-bold">Bio:</span> {{userinfo.bio}}</div>
+                <div class="my-3"><span class="font-weight-bold">Bio:</span> </p>{{userinfo.bio}}</div>
                 
             </div>
             <div class="mx-auto text-center p-3">
@@ -106,7 +107,8 @@
                 </div>
                 
                 <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img src="{{url_for('static', filename='')}}" class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
+                    <a href="#" class="text-dark d-flex justify-content-start align-items-center font-weight-bold"><img class="img-thumbnail mx-4 rounded-circle profilepic-icon" src='{{url_for("static", filename="{}".format(userinfo.profilepic))}}' />
+                        <div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
                     </div >
 
                 

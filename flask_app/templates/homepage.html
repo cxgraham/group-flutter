@@ -15,7 +15,7 @@
 <link rel="manifest" href="{{ url_for('static', filename='/favicon/manifest.json') }}">
 
 <!-- ------------------------------------- -->
-
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
@@ -144,7 +144,8 @@
                 </div>
                 
                 <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img src="{{url_for('static', filename='')}}" class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
+                    <a href="#" class="text-dark d-flex justify-content-start align-items-center font-weight-bold"><img class="img-thumbnail mx-4 rounded-circle profilepic-icon" src='{{url_for("static", filename="{}".format(userinfo.profilepic))}}' />
+                        <div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
                     </div >
 
                 

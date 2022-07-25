@@ -8275,7 +8275,7 @@ h1, h2, h3, h4, h5,
           border-color: transparent !important; }
 
 #friendButton {
-  background-color: var(--purple);
+  background-color: blueviolet;
 }
 
 a[data-toggle="collapse"] {

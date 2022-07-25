@@ -168,11 +168,9 @@
                 </div>
 
                 <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img
-                            src="{{url_for('static', filename='')}}" class="img rounded-circle mx-4" />
-                        <div class="d-block text-override text-dark">{{profile_id.first_name}} {{profile_id.last_name}}</div>
-                    </a>
-                </div>
+                    <a href="#" class="text-dark d-flex justify-content-start align-items-center font-weight-bold"><img class="img-thumbnail mx-4 rounded-circle profilepic-icon" src='{{url_for("static", filename="{}".format(userinfo.profilepic))}}' />
+                        <div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
+                    </div >
 
 
                 <div class="mb-5  p-4 border rounded border-5">

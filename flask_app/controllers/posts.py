@@ -12,7 +12,7 @@ def create_post():
     data = {'user_id' : session['user_id']}
     userinfo = profile.Profile.get_profile_by_id(data)
     print(userinfo.id)
-    return render_template('createpost.html', profile_id = userinfo.id)
+    return render_template('createpost.html', profile_id = userinfo.id, userinfo=userinfo)
 
 
 @app.route('/posts/create', methods = ['POST'])
