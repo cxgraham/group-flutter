@@ -3,7 +3,7 @@ from flask import render_template, request, redirect, session, flash
 from flask_app.models import user, profile, post
 
 # CREATE
-# Sam - Added create post route 
+# Sam - Added create post rout 
 @app.route('/posts/create', methods= ['GET'])
 def create_post():
     if 'user_id' not in session:
@@ -11,7 +11,8 @@ def create_post():
         return ('/register')
     data = {'user_id' : session['user_id']}
     userinfo = profile.Profile.get_profile_by_id(data)
-    return render_template('createpost.html', profile_id = userinfo)
+    print(userinfo.id)
+    return render_template('createpost.html', profile_id = userinfo.id)
 
 
 @app.route('/posts/create', methods = ['POST'])
@@ -21,7 +22,6 @@ def add_post():
         return ('/register')
     data = {'user_id' : session['user_id']}
     userinfo = profile.Profile.get_profile_by_id(data)
-    profile_id = userinfo.id
     post.Post.create_post(request.form)
     return redirect('/homepage')
 

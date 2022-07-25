@@ -41,8 +41,6 @@ class Profile:
         query = """UPDATE profiles SET first_name= %(first_name)s, last_name = %(last_name)s, birthday = %(birthday)s, username= %(username)s, bio = %(bio)s
                     WHERE id = %(user_id)s;""" #note: this is the profile ID passed through the userinfo obj in editprofile.html
         result = connectToMySQL(db).query_db(query,data)
-        
-
     @staticmethod
     def validate(newuser):
         is_valid = True
