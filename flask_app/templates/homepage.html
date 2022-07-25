@@ -24,9 +24,8 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}" />
 </head>
 
-<body>
-    <div>
-    <div class="wrapper d-flex align-items-stretch">
+<body class="wrapper d-flex align-items-stretch">
+    
         <nav id="sidebar">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -131,8 +130,10 @@
 
 
     <nav id="sidebar2">
-        <div class="p-4 pt-5">
-            
+        <div class="p-4 pt-2">
+            <div class="d-flex justify-content-end align-items-top">
+            <a href="/logout" class="btn btn-sm btn-danger mb-5">Logout</a>
+                </div>
             <ul class="list-unstyled components mb-5">
                 <div class="mb-5">
                     <form action="#" class="subscribe-form">
