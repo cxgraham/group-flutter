@@ -15,7 +15,7 @@ class Profile:
         self.bio = data['bio']
         self.profilepic = data['profilepic']
         self.user_id = data['user_id']
-        # self.idfriend = data["idfriend"] #experienced issues with this, commenting out for now
+        # self.idfriend = data["idfriend"] #experienced issues with idfriend and creating post, commenting out for now until friend feature is created
 
 
 #///////////// CREATE ////////////////////
@@ -38,7 +38,9 @@ class Profile:
                     WHERE users.id = %(user_id)s;"""
         # print("$$$$$$", query) 
         result = connectToMySQL(db).query_db(query,data)
-        return cls(result[0])
+        if result:
+            result = cls(result[0])
+        return result
 
 #///////////// UPDATE ////////////////////
     @classmethod #edit profile
