@@ -13,9 +13,12 @@ class Profile:
         self.username = data['username']
         self.birthday = data['birthday']
         self.bio = data['bio']
+        self.profilepic = data['profilepic']
         self.user_id = data['user_id']
         self.idfriend = data["idfriend"]
 
+
+#///////////// CREATE ////////////////////
     @classmethod  #new profile maker 
     def new_profile(cls, data):
         print("*******", data)
@@ -26,6 +29,7 @@ class Profile:
         print (result)
         return result
 
+#///////////// READ ////////////////////
     @classmethod #get user's profile
     def get_profile_by_id(cls, data):
         # print("*********", data) 
@@ -36,11 +40,24 @@ class Profile:
         result = connectToMySQL(db).query_db(query,data)
         return cls(result[0])
 
+#///////////// UPDATE ////////////////////
     @classmethod #edit profile
     def edit_my_profile(cls,data):
         query = """UPDATE profiles SET first_name= %(first_name)s, last_name = %(last_name)s, birthday = %(birthday)s, username= %(username)s, bio = %(bio)s
                     WHERE id = %(user_id)s;""" #note: this is the profile ID passed through the userinfo obj in editprofile.html
         result = connectToMySQL(db).query_db(query,data)
+
+    @classmethod #edit profilepic url
+    def edit_profilepic_url(cls,data):
+        query = """UPDATE profiles 
+        LEFT JOIN users on users.id = profiles.user_id 
+        SET profilepic = %(profilepic)s
+        WHERE users.id = %(user_id)s"""
+        result = connectToMySQL(db).query_db(query,data)
+        # print ("profilepic UPDATE result", result)
+
+
+
     @staticmethod
     def validate(newuser):
         is_valid = True
@@ -73,7 +90,6 @@ class Profile:
         parsed_data['last_name'] = data['last_name']
         parsed_data['username'] = data['username'] 
         parsed_data['birthday'] = data['birthday']
-        parsed_data['username'] = data['username']
         parsed_data['bio'] = data['bio']
         parsed_data['user_id'] = data['user_id']
         return parsed_data
