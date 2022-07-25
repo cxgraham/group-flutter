@@ -112,8 +112,35 @@
                     <div class="text-center">
                         <button type="submit" class="btn bg-success mb-md-2 mt-2">Edit Profile</button>
                     </div>
+                </form>
+                <h4 class="text-center mt-4 mb-2">Your Profile Picture</h4>
+                <form action="/uploadprofilepic" method="post" enctype="multipart/form-data">
+                        {%if userinfo.profilepic%}
+                        <img class="img-fluid rounded mx-auto d-block" src="{{url_for('static', filename=userinfo.profilepic)}}" alt="{{userinfo.first_name}} {{userinfo.last_name}}">
+                        {%else%}
+                        <h6 class="text-center text-dark">No picture uploaded</h6>
+                        {%endif%}
+                        <div>
+                            <label class="form-label text-dark mt-2" for="profilepic">Upload a photo: (2MB limit)</label>
+                        </div>
+                        <div>
+                            <input type="file" class="form-control" id="profilepic" name="profilepic" accept="image/*"">
+                        </div>
+                            <input for="item_id" type="hidden" name="user_id" value="userinfo.id">
+                        <div class="text-center">
+                            <button type="submit" class="btn bg-success mb-2 mt-2">Upload Picture</button>
+                        </div>
                     
                 </form>
+                <div class="mt-2">
+                    {% with profilepic_upload = get_flashed_messages(category_filter=["profilepic_upload"])  %}
+                        {% if profilepic_upload %}
+                            {% for message in profilepic_upload %}
+                            <p class="bg-light text-dark rounded-3 p-2">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
             </div>
         
         <!-- -----------------------------------------------------Navbar2--------------------------- -->
@@ -132,7 +159,7 @@
                 </div>
                 
                 <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img src="{{url_for('static', filename='')}}" class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
+                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img class="img-thumbnail profilepic-icon" src="{{url_for('static', filename=userinfo.profilepic)}}" class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
                     </div >
 
                 
