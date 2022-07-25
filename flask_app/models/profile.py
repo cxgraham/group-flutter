@@ -15,7 +15,7 @@ class Profile:
         self.bio = data['bio']
         self.profilepic = data['profilepic']
         self.user_id = data['user_id']
-        self.idfriend = data["idfriend"]
+        # self.idfriend = data["idfriend"] #experienced issues with this, commenting out for now
 
 
 #///////////// CREATE ////////////////////
