@@ -20,8 +20,6 @@ def add_post():
     if 'user_id' not in session:
         flash('You must create an account to add a post')
         return ('/register')
-    data = {'user_id' : session['user_id']}
-    userinfo = profile.Profile.get_profile_by_id(data)
     post.Post.create_post(request.form)
     return redirect('/homepage')
 
