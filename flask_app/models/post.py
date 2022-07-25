@@ -41,17 +41,17 @@ class Post:
         all_posts = []
         for this_post in results:
             new_post = cls(this_post)
-            this_creator = {
-                'id': this_creator['profiles.id'],
-                'first_name': this_creator['first_name'],
-                'last_name': this_creator['last_name'],
-                'birthday': this_creator['birthday'],
-                'username': this_creator['username'],
-                'user_id': this_creator['user_id'],
-                'created_at': this_creator['profiles.created_at'],
-                'updated_at': this_creator['profiles.updated_at']
-            }
-            new_post.creator = profile.Profile(this_creator)
+            # this_creator = {
+            #     'id': this_creator['profiles.id'],
+            #     'first_name': this_creator['first_name'],
+            #     'last_name': this_creator['last_name'],
+            #     'birthday': this_creator['birthday'],
+            #     'username': this_creator['username'],
+            #     'user_id': this_creator['user_id'],
+            #     'created_at': this_creator['profiles.created_at'],
+            #     'updated_at': this_creator['profiles.updated_at']
+            # }
+            # new_post.creator = profile.Profile(this_creator)
             all_posts.append(new_post)
         return all_posts
 

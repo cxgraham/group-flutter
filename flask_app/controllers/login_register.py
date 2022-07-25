@@ -84,15 +84,6 @@ def editmyprofile():
 
 #login-register-profile works!
 
-@app.route('/homepage') #direct to main page, need to add user id to the url
-def main():
-    if 'user_id' not in session:
-        flash("Please log back in")
-        return redirect ('/')
-    data = {'user_id': session['user_id']}
-    userinfo = Profile.get_profile_by_id(data) #userinfor can be changed to profile info if you want
-    session['profile_id'] = session['user_id']
-    return render_template ('homepage.html', userinfo = userinfo)
 
 @app.route('/logout')
 def logout():
