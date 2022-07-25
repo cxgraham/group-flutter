@@ -47,6 +47,7 @@ class Profile:
                     WHERE id = %(user_id)s;""" #note: this is the profile ID passed through the userinfo obj in editprofile.html
         result = connectToMySQL(db).query_db(query,data)
 
+
     @classmethod #edit profilepic url
     def edit_profilepic_url(cls,data):
         query = """UPDATE profiles 
@@ -55,8 +56,6 @@ class Profile:
         WHERE users.id = %(user_id)s"""
         result = connectToMySQL(db).query_db(query,data)
         # print ("profilepic UPDATE result", result)
-
-
 
     @staticmethod
     def validate(newuser):
