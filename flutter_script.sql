@@ -118,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `flutter_schema`.`profiles` (
   `username` VARCHAR(255) NULL,
   `bio` VARCHAR(1000) NULL,
   `birthday` DATE NULL,
+  `profilepic` VARCHAR(255) NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `like_id` INT NULL DEFAULT NULL,

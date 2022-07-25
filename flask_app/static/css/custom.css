@@ -1,5 +1,10 @@
 .maintitle{
-    font-size:100px;
+    font-size:75px;
+}
+.text-shadow{
+    text-shadow: -1px 1px 0 blueviolet,
+    1px 1px 0 blueviolet,
+    1px -1px 0 blueviolet;
 }
 
 .mainborder{
@@ -22,3 +27,24 @@
     width:100%;
     border-color: blueviolet;
 }
+
+body, html {
+    height: auto;
+    width: 100%;
+}
+
+.bg {
+    /* background-image: url("/static/img/backgrounds/Butterfly_Net.png"); */
+    background-image: url("/static/img/backgrounds/ButterflyWallpaper.jpg");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profilepic-icon{
+    width: 60px;
+    height: 60px;
+
+}
+

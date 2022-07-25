@@ -8,23 +8,23 @@
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
     
     <!-- ------------------------------Favicon -->
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon-32x32.png') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon-96x96.png') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon-16x16.png') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon-16x16.png') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon.ico') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-<link rel="manifest" href="{{ url_for('static', filename='/favicon/manifest.json') }}">
-
-<!-- ------------------------------------- -->
-
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon-96x96.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon-16x16.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/favicon-16x16.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='/favicon/manifest.json') }}">
     
+    <!-- ------------------------------------- -->
+    
+    
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
 
 </head>
 <body>
@@ -112,8 +112,35 @@
                     <div class="text-center">
                         <button type="submit" class="btn bg-success mb-md-2 mt-2">Edit Profile</button>
                     </div>
+                </form>
+                <h4 class="text-center mt-4 mb-2">Your Profile Picture</h4>
+                <form action="/uploadprofilepic" method="post" enctype="multipart/form-data">
+                        {%if userinfo.profilepic%}
+                        <img class="img-fluid rounded mx-auto d-block" src="{{url_for('static', filename='/userinfo.profilepic')}}" alt="{{userinfo.first_name}} {{userinfo.last_name}}">
+                        {%else%}
+                        <h6 class="text-center text-dark">No picture uploaded</h6>
+                        {%endif%}
+                        <div>
+                            <label class="form-label text-dark mt-2" for="profilepic">Upload a photo: (2MB limit)</label>
+                        </div>
+                        <div>
+                            <input type="file" class="form-control" id="profilepic" name="profilepic" accept="image/*"">
+                        </div>
+                            <input for="item_id" type="hidden" name="user_id" value="userinfo.id">
+                        <div class="text-center">
+                            <button type="submit" class="btn bg-success mb-2 mt-2">Upload Picture</button>
+                        </div>
                     
                 </form>
+                <div class="mt-2">
+                    {% with profilepic_upload = get_flashed_messages(category_filter=["profilepic_upload"])  %}
+                        {% if profilepic_upload %}
+                            {% for message in profilepic_upload %}
+                            <p class="bg-light text-dark rounded-3 p-2">{{message}}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
             </div>
         
         <!-- -----------------------------------------------------Navbar2--------------------------- -->
@@ -135,7 +162,10 @@
                 </div>
                 
                 <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img src="{{url_for('static', filename='')}}" class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
+                    <a href="#" class="text-dark d-flex justify-content-start align-items-center font-weight-bold">
+                        <img class="img-thumbnail rounded-circle profilepic-icon" src='{{url_for("static", filename="{}".format(userinfo.profilepic))}}'  />
+                            <div class="d-block"> {{userinfo.first_name}} {{userinfo.last_name}}</div> 
+                    </a>
                     </div >
 
                 

@@ -1,0 +1,18 @@
+
+
+<Sam>   Start thinking about the routing as it's laid out on the navbars:   
+            <!>
+            HomePage: Should be curated content by user. How can we implement that? Only posts from liked users? Or a fizz-buzz type thing, and display one random post every 3rd?
+            Posts page: Can we query all posts by session user_id? Then display, and have the update post paths through that screen.
+            Friends page: Display all friends by id, and implement a search by name? This would also route from the search bar on the right-nav.</!>
+
+            Do we want to kill messages? Or just backlog it, and we can try implement a websocket chat down the road. I can route us a coming soon page if we want to keep it on layout. Or disable 
+            it and have a mouseover that says coming soon?
+            Notification: I'm not sure where we go with this. Websocket push for likes and friends? Might be more than we want to bite off. 
+</Sam>
+
+
+<Sam>    
+    We had talked about email-confirmation before. I think that's officially backlog for now, but I'll look into doing it as soon as the rest is built out.
+
+</sam>
