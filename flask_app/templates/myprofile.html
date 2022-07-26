@@ -91,6 +91,8 @@
             {% for post in createdposts %}
                 <h3>{{post.name}}</h3>
                 <p>{{post.content}}</p>
+                <a href="/posts/edit/{{post.id}}">Edit</a> |
+                <a href="/posts/delete/{{post.id}}">Delete</a>
             {% endfor %}
         </div>
     
