@@ -1,4 +1,4 @@
-from flask_app.controllers import login_register, posts, homeController, upload
+from flask_app.controllers import login_register, posts, homeController, upload, friends
 from flask_app import app
 
 

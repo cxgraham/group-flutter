@@ -13,7 +13,8 @@ class User:
         self.id = data['id']
         self.email = data['email']
         self.password = data['password']
-        
+        self.profile = []
+
 
     @classmethod
     def get_user_by_email(cls, data): #need for app.route(/login)
@@ -23,3 +24,6 @@ class User:
         if len(result)<1:
             return False
         return cls(result[0])
+
+
+
