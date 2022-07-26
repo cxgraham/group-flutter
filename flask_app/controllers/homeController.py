@@ -16,6 +16,6 @@ def main():
         return redirect ('/')
     data = {'user_id': session['user_id']}
     userinfo = Profile.get_profile_by_id(data) #userinfor can be changed to profile info if you want
-    session['profile_id'] = session['user_id']
+    session['profile_id'] = userinfo.id
     allPosts = Post.get_all_posts()
     return render_template ('homepage.html', userinfo=userinfo, allPosts=allPosts)

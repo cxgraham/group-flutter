@@ -117,7 +117,7 @@
                             <label for="content" class="form-label">Post (up to 1000 characters):</label>
                             <textarea name="content" rows="4" id="content" class="form-control"></textarea>
                         </div>
-                        <input type="hidden" name="profile_id" value="{{profile_id}}">
+                        <input type="hidden" name="profile_id" value="{{session['profile_id']}}">
                         <div class="text-center">
                             <button type="submit" class="btn bg-success text-dark mb-md-2 mt-2">Post</button>
                         </div>

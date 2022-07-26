@@ -11,6 +11,8 @@ def create_post():
         return ('/register')
     data = {'user_id' : session['user_id']}
     userinfo = profile.Profile.get_profile_by_id(data)
+    print("***********SESSUIB PROFILE CHECK. SESSION PROFILE ID is ", session['profile_id'], "**********")
+
     return render_template('createpost.html', userinfo=userinfo)
 
 

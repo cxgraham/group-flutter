@@ -38,7 +38,7 @@ class Post:
         LEFT JOIN profiles ON posts.profile_id = profiles.id
         ;"""
         results = connectToMySQL(cls.db).query_db(query)
-        print (results)
+        # print (results)
         all_posts = []
         for this_post in results:
             new_post = cls(this_post)
@@ -49,6 +49,7 @@ class Post:
                 'birthday': this_post['birthday'],
                 'username': this_post['username'],
                 'bio': this_post['bio'],
+                'profilepic': this_post['profilepic'],
                 'user_id': this_post['user_id'],
                 'created_at': this_post['profiles.created_at'],
                 'updated_at': this_post['profiles.updated_at']
