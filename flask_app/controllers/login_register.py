@@ -6,6 +6,7 @@ bcrypt = Bcrypt(app)
 from flask_app.models.user import User
 from flask_app.models.register import Register
 from flask_app.models.profile import Profile
+from flask_app.models.post import Post
 
 
 @app.route('/') #main login page
@@ -55,15 +56,16 @@ def createnewprofile():
     newprofile = Profile.new_profile(data)
     return redirect ('/homepage') #direct to main page, need to add user id to the url
 
-@app.route('/myprofile') #page for user to see their profile
-def myprofile():
+@app.route('/myprofile/<int: id>') #page for user to see their profile
+def myprofile(id):
     if 'user_id' not in session:
         flash("Please log back in")
         return redirect ('/') #userinfor can be changed to profile info if you want
     data = {'user_id' : session['user_id']}
     userinfo = Profile.get_profile_by_id(data)
     print("@@@@@@@@@@", userinfo)
-    return render_template ('myprofile.html', userinfo =userinfo)
+    createdposts = Post.get_users_posts_by_id(id)
+    return render_template ('myprofile.html', userinfo =userinfo, createdposts = createdposts)
 
 @app.route('/editprofile') #edit profile page
 def editprofile():

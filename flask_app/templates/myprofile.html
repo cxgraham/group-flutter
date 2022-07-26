@@ -86,6 +86,13 @@
                 <a href="/editprofile" id="editButton" class="btn">Edit Profile</a>
             </div>
         </div>
+        <div>
+            <h2>Your Created Posts</h2>
+            {% for post in createdposts %}
+                <h3>{{post.name}}</h3>
+                <p>{{post.content}}</p>
+            {% endfor %}
+        </div>
     
 <!-- -----------------------------------------------------Navbar2 --------------------->
 

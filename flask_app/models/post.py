@@ -70,6 +70,21 @@ class Post:
         if this_post:
             this_post = cls(this_post[0])
         return this_post
+    
+    @classmethod
+    def get_users_posts_by_id(cls, data):
+        query = """
+        SELECT * FROM posts
+        LEFT JOIN profiles ON posts.profile_id = profiles.id 
+        WHERE profiles.id = %(id)s
+        ;"""
+        users_posts = []
+        results = connectToMySQL(cls.db).query_db(query, data)
+        print(results)
+        for post in results:
+            users_posts.append(post)
+        return users_posts
+
 
 
     # UPDATE
