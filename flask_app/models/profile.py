@@ -15,7 +15,7 @@ class Profile:
         self.bio = data['bio']
         self.profilepic = data['profilepic']
         self.user_id = data['user_id']
-        self.idfriend = data["idfriend"]
+        # self.idfriend = data["idfriend"] #experienced issues with idfriend and creating post, commenting out for now until friend feature is created
 
 
 #///////////// CREATE ////////////////////
@@ -38,7 +38,9 @@ class Profile:
                     WHERE users.id = %(user_id)s;"""
         # print("$$$$$$", query) 
         result = connectToMySQL(db).query_db(query,data)
-        return cls(result[0])
+        if result:
+            result = cls(result[0])
+        return result
 
 #///////////// UPDATE ////////////////////
     @classmethod #edit profile
@@ -46,6 +48,7 @@ class Profile:
         query = """UPDATE profiles SET first_name= %(first_name)s, last_name = %(last_name)s, birthday = %(birthday)s, username= %(username)s, bio = %(bio)s
                     WHERE id = %(user_id)s;""" #note: this is the profile ID passed through the userinfo obj in editprofile.html
         result = connectToMySQL(db).query_db(query,data)
+
 
     @classmethod #edit profilepic url
     def edit_profilepic_url(cls,data):
@@ -55,8 +58,6 @@ class Profile:
         WHERE users.id = %(user_id)s"""
         result = connectToMySQL(db).query_db(query,data)
         # print ("profilepic UPDATE result", result)
-
-
 
     @staticmethod
     def validate(newuser):

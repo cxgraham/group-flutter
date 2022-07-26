@@ -27,33 +27,9 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}" />
-
-
 </head>
 
 <body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar">
             <div class="custom-menu">
@@ -138,10 +114,10 @@
 
 
                         <div class="mb-3 form-group">
-                            <label for="content" class="form-label">Content (up to 1000 characters):</label>
+                            <label for="content" class="form-label">Post (up to 1000 characters):</label>
                             <textarea name="content" rows="4" id="content" class="form-control"></textarea>
                         </div>
-                        <input type="hidden" name="profile_id" value="{{profile_id}}">
+                        <input type="hidden" name="profile_id" value="{{session['profile_id']}}">
                         <div class="text-center">
                             <button type="submit" class="btn bg-success text-dark mb-md-2 mt-2">Post</button>
                         </div>
@@ -155,7 +131,10 @@
     
 
     <nav id="sidebar2">
-        <div class="p-4 pt-5">
+        <div class="p-4 pt-2">
+            <div class="d-flex justify-content-end align-items-top">
+                <a href="/logout" class="btn btn-sm btn-danger mb-5">Logout</a>
+                    </div>
 
             <ul class="list-unstyled components mb-5">
                 <div class="mb-5">
