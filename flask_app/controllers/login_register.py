@@ -56,15 +56,16 @@ def createnewprofile():
     newprofile = Profile.new_profile(data)
     return redirect ('/homepage') #direct to main page, need to add user id to the url
 
-@app.route('/myprofile/<int:id>') #page for user to see their profile
-def myprofile(id):
+@app.route('/myprofile') #page for user to see their profile
+def myprofile():
     if 'user_id' not in session:
         flash("Please log back in")
         return redirect ('/') #userinfor can be changed to profile info if you want
     data = {'user_id' : session['user_id']}
     userinfo = Profile.get_profile_by_id(data)
     print("@@@@@@@@@@", userinfo)
-    createdposts = Post.get_users_posts_by_id(id)
+    data = {'user_id' : session['user_id']}
+    createdposts = Post.get_users_posts_by_id(data)
     return render_template ('myprofile.html', userinfo =userinfo, createdposts = createdposts)
 
 @app.route('/editprofile') #edit profile page

@@ -76,7 +76,8 @@ class Post:
         query = """
         SELECT * FROM posts
         LEFT JOIN profiles ON posts.profile_id = profiles.id 
-        WHERE profiles.id = %(id)s
+        LEFT JOIN users ON profiles.user_id = users.id
+        WHERE users.id = %(user_id)s
         ;"""
         users_posts = []
         results = connectToMySQL(cls.db).query_db(query, data)
@@ -93,7 +94,7 @@ class Post:
         # add validate post method
         query = """
         UPDATE posts
-        SET name = %(name)s, content = %(content)s, location = %(location)s
+        SET content = %(content)s
         WHERE posts.id = %(id)s
         ;"""
         return connectToMySQL(cls.db).query_db(query, data)
