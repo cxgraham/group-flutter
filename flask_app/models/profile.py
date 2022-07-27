@@ -42,6 +42,21 @@ class Profile:
             result = cls(result[0])
         return result
 
+
+    @classmethod
+    def get_one_profile_by_id(cls, id):
+        data = id
+        query = """
+        SELECT * FROM profiles
+        WHERE id = %(id)s
+        ;"""
+        this_profile = connectToMySQL(db).query_db(query, data)
+        print (this_profile)
+        if this_profile:
+            this_profile = cls(this_profile[0])
+        return this_profile
+
+
 #///////////// UPDATE ////////////////////
     @classmethod #edit profile
     def edit_my_profile(cls,data):
