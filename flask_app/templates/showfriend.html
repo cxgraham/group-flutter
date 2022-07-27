@@ -18,12 +18,14 @@
     <!-- ------------------------------------- -->
     
     
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style3.css') }}" />
     
 </head>
 <body>
@@ -78,9 +80,10 @@
             <div class="col-sm-4 border rounded my-5 mx-auto pt-2 main-bg-color">
                 <h2 class="text-center mt-3 mb-4">User</h2>
                 <div>
-                    {{user.id}}
-                    {{user.user_id}}
-                    {{user.friend_id}}
+                    {% for u in user.profile %}
+                        {{u.first_name}} {{u.last_name}}
+                        {{u.username}}
+                    {% endfor %}
                 </div>
             </div>
         
