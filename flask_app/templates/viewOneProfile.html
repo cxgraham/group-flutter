@@ -46,7 +46,7 @@
                     <li class="d-inline">
                         </i> <a href="#"><i class="bi bi-people-fill p-3"></i> Friends</a>
                     </li><li>
-                        <a href="#"><i class="bi bi-bell-fill p-3"></i> Notifications</a>
+                        <a href="/explore"><i class="bi bi-binoculars-fill p-3"></i> Explore</a>
                     </li><li>
                         <a href="#"><i class="bi bi-envelope-fill p-3"></i>Messages</a>
                     </li>
@@ -73,13 +73,15 @@
         </nav>
 
         <!-- ----------------------Page Content --------------------------- -->
-        <div id="content" class="p-5 p-md-5 pt-5 text-dark ml-4 ">
-            <h2 class="mb-5 p-2 text-center">Your Profile</h2>
+        <div id="content" class="p-5 p-md-5 pt-3 text-dark ml-3 ">
+            <h2 class="mb-5 p-2 text-center">View Profile</h2>
             <div class="container p-5 border border-primary">
-                <div class="my-3"><span class="font-weight-bold">Username:</span> {{profileinfo.username}}</div>
-                <div class="my-3"><span class="font-weight-bold">Name:</span> {{profileinfo.first_name}} {{profileinfo.last_name}}</div>
-                <div class="my-3"><span class="font-weight-bold">Birthday:</span> {{profileinfo.birthday}}</div>
-                <div class="my-3"><span class="font-weight-bold">Bio:</span> </p>{{profileinfo.bio}}</div>
+                <a href="/profile/{{profileinfo.user_id}}" class="text-dark d-flex justify-content-start align-items-center font-weight-bold"><img class="img-thumbnail mx-4 rounded-circle profilepic-icon" src='{{url_for("static", filename="{}".format(profileinfo.profilepic))}}' />
+                    <div class="d-block">{{profileinfo.username}}</div> </a>
+                <div class="my-3 mt-5"><span class="font-weight-bold ml-4">Username: </span> {{profileinfo.username}}</div>
+                <div class="my-3"><span class="font-weight-bold ml-4">Name: </span> {{profileinfo.first_name}} {{profileinfo.last_name}}</div>
+                <div class="my-3"><span class="font-weight-bold ml-4">Birthday: </span> {{profileinfo.birthday}}</div>
+                <div class="my-3"><span class="font-weight-bold ml-4">Bio: </span> {{profileinfo.bio}}</div>
                 
             </div>
             <div class="mx-auto text-center p-3">
@@ -98,10 +100,10 @@
                     </div>
             <ul class="list-unstyled components mb-5">
                 <div class="mb-5">
-                    <form action="#" class="subscribe-form">
+                    <form action="/profiles/search" class="subscribe-form" method="post">
                         <div class="form-group d-flex">
                             <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="search" class="form-control border border-rounded" placeholder="Search Users">
+                            <input type="search" name="searchQuery" class="form-control border border-rounded" placeholder="Search Users">
                         </div>
                     </form>
                 </div>
