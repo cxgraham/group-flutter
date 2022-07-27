@@ -56,7 +56,7 @@ def createnewprofile():
     newprofile = Profile.new_profile(data)
     return redirect ('/homepage') #direct to main page, need to add user id to the url
 
-@app.route('/myprofile/<int: id>') #page for user to see their profile
+@app.route('/myprofile/<int:id>') #page for user to see their profile
 def myprofile(id):
     if 'user_id' not in session:
         flash("Please log back in")
