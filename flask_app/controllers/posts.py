@@ -37,9 +37,7 @@ def edit_post(id):
 def update_post():
     data = {
         'id': request.form['post.id'],
-        'name': request.form['name'],
         'content': request.form['content'],
-        'location': request.form['location']
     }
     post.Post.edit_post_by_id(data)
     return redirect('/homepage')
@@ -47,6 +45,6 @@ def update_post():
 
 # DELETE
 @app.route('/posts/delete/<int:id>')
-def delete_post():
+def delete_post(id):
     post.Post.delete_post_by_id(id)
     return redirect (request.referrer)

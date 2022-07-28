@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+</head>
+<body>
+    <div class="edit-post">
+        <div class="edit-form">
+            <h2>Edit Post</h2>
+            <form action="/posts/update", method = 'post'>
+                <input type="hidden" name="profile_id" value={{session.profile_id}}>
+                <input type="hidden" name="post.id" value={{this_post.id}}>
+                <label>
+                    Location:
+                    <input type="location" value={{this_post.location}}>
+                </label>
+                <textarea name="content" cols="30" rows="10">{{this_post.content}}</textarea>
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
