@@ -44,7 +44,7 @@
                         <a href="#"><i class="bi bi-card-heading p-3"></i> Posts</a>
                     </li>
                     <li class="d-inline">
-                        </i> <a href="#"><i class="bi bi-people-fill p-3"></i> Friends</a>
+                        </i> <a href="/friends"><i class="bi bi-people-fill p-3"></i> Friends</a>
                     </li><li>
                         <a href="/explore"><i class="bi bi-binoculars-fill p-3"></i> Explore</a>
                     </li><li>
@@ -158,6 +158,13 @@
             <div class="mb-5  p-4 border rounded border-5">
                 <h5>Friends</h5>
                 <div class="">
+                    {% for friend in friends %}
+                    <div class="my-4">
+                        <a href="#" class="text-dark d-flex justify-content-between font-weight-bold">{{friend.profile_data.first_name}} <img src='{{url_for("static", filename="{}".format(friend.profile_data.profilepic))}}' class="img rounded-circle" /></a>
+                        </div >
+                    {% endfor %}
+
+
                     <div class="my-4">
                     <a href="#" class="text-dark d-flex justify-content-between font-weight-bold">Christian <img src="{{url_for('static', filename='')}}" class="img rounded-circle" /></a>
                     </div >
@@ -170,12 +177,7 @@
                 </div>
                 <div class="mt-5 mb-3">
                     
-                    <form action="#" class="colorlib-subscribe-form">
-                        <div class="form-group d-flex">
-                            <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="button" id="friendButton" class="form-control" id="friendButton" value="All Friends" />
-                        </div>
-                    </form>
+                    <a href="/friends" type="button" id="friendButton" class="form-control text-center pt-3" id="friendButton"><span class="font-weight-bolder text-light">Find Friends</span></a>
                 </div>
             </div>
             
