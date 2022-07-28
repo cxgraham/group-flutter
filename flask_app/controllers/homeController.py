@@ -8,7 +8,7 @@ from flask_app.models.user import User
 from flask_app.models.register import Register
 from flask_app.models.profile import Profile
 from flask_app.models.post import Post
-
+from flask_app.models.friend import Friend
 
 @app.route('/homepage') #direct to main page, need to add user id to the url
 def main():
@@ -56,7 +56,7 @@ def search_result(searchQuery):
     data = {'user_id': session['user_id']}
     userinfo = Profile.get_profile_by_id(data)
     print("@@@@@@@@@@@@@@@@@displayRoute!!!!!!!", searchResult)
-    return render_template("search_result.html", searchResult=searchResult, userinfo=userinfo)
+    return render_template("search_result.html", searchResult=searchResult, userinfo=userinfo, friends=Friend.get_all_friends(data))
 
 
 

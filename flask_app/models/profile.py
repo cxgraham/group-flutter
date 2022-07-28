@@ -71,9 +71,8 @@ class Profile:
     @classmethod
     def profile_search(cls, data):
         print("**", data)
-        query = """ SELECT * FROM profiles
-                WHERE username = %(searchQuery)s;
-        """
+        query =query = """ SELECT * FROM profiles
+                WHERE username = %(searchQuery)s OR first_name = %(searchQuery)s OR last_name =%(searchQuery)s;"""
         all_results = []
         result = connectToMySQL(db).query_db(query,data)
         # print("@@@@@@@@@@@@@@@@@model_result", result)
