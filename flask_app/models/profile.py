@@ -42,6 +42,47 @@ class Profile:
             result = cls(result[0])
         return result
 
+
+    @classmethod
+    def get_all_profiles(cls):
+        query = """SELECT * from profiles;"""
+        result = connectToMySQL(db).query_db(query)
+        allProfiles = []
+        for oneProfile in result:
+            this_profile = cls(oneProfile)
+            allProfiles.append(this_profile)
+        return allProfiles
+            
+
+
+    @classmethod
+    def get_one_profile_by_id(cls, id):
+        data = id
+        query = """
+        SELECT * FROM profiles
+        WHERE id = %(id)s
+        ;"""
+        this_profile = connectToMySQL(db).query_db(query, data)
+        print (this_profile)
+        if this_profile:
+            this_profile = cls(this_profile[0])
+        return this_profile
+
+    @classmethod
+    def profile_search(cls, data):
+        print("**", data)
+        query = """ SELECT * FROM profiles
+                WHERE username = %(searchQuery)s;
+        """
+        all_results = []
+        result = connectToMySQL(db).query_db(query,data)
+        # print("@@@@@@@@@@@@@@@@@model_result", result)
+
+        for this_result in result:
+            user = cls(this_result)
+            all_results.append(user)
+        return all_results
+
 #///////////// UPDATE ////////////////////
     @classmethod #edit profile
     def edit_my_profile(cls,data):

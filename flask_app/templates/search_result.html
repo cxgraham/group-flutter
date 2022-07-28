@@ -6,11 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <!-- ------------------------Favicons---------------------- -->
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon-32x32.png') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon-96x96.png') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon-16x16.png') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon-16x16.png') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='/favicon/favicon.ico') }}">
+
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <link rel="manifest" href="{{ url_for('static', filename='/favicon/manifest.json') }}">
 
@@ -22,11 +18,14 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
 </head>
 
 <body>
     <div>
+        <!-- Body wrapper div into nav -->
     <div class="wrapper d-flex align-items-stretch">
+        
         <nav id="sidebar">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -39,7 +38,7 @@
                 <ul class="list-unstyled components mb-5">
                     <li class="active">
                         <li>
-                            <a href="#"><i class="bi bi-house-fill p-3"></i> Home</a>
+                            <a href="/homepage"><i class="bi bi-house-fill p-3"></i> Home</a>
                         </li> 
                     <li>
                         <a href="#"><i class="bi bi-card-heading p-3"></i> Posts</a>
@@ -73,66 +72,40 @@
             </div>
         </nav>
 
-        <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5 pt-5 ml-5">
-            <h2 class="mb-4 text-center">Welcome to Flutter!</h2>
+        <!-- ----------------------Page Content --------------------------- -->
 
-
-            {% for post in allPosts %}
-            <div class="card mx-auto" style="width: 40rem;">
-                <img class="card-img-top" src="image url??????" alt="File upload image url - Need help with this">
-                <div class="card-body">
-                    <h5 class="card-title">{{post.name}}</h5>
-                    <p class="card-text">{{post.content}}</p>
-                    <a href="#" class="btn btn-info btn-sm">Maybe a link to creators profile?</a>
-                </div>
-            </div>
-            {% endfor %}
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-        </div>
+            <div id="content" class="p-4 p-md-5 pt-5 ml-5">
+                <h2 class="mb-4 text-center">Welcome to Flutter!</h2>
     
+    
+                {% for result in searchResult %}
+                <div class="card mx-auto pt-4 px-3" style="width: 40rem;">
+                    <a href="/profile/{{result.user_id}}" class="text-dark d-flex justify-content-start align-items-center font-weight-bold"><img class="img-thumbnail mx-4 rounded-circle profilepic-icon" src='{{url_for("static", filename="{}".format(result.profilepic))}}' />
+                        <div class="d-block">{{result.username}}</div> </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{result.first_name}} {{result.last_name}}</h5>
+                        <p class="card-text">{{result.bio}}</p>
+                        <div class=" d-flex justify-content-between">
+                        <a href="#" class="btn btn-info btn-sm">Friend?</a>
+                        <a href="#" class="btn btn-info btn-sm pb-2 text-center"><i class="bi bi-hand-thumbs-up-fill pb-5"></i></a>
+                            </div>
+                    </div>
 
+                </div>
+                {% endfor %}
+
+                <h5 class="text-center">Looks like that's all the results.</h5>
+                </div>
+        
+<!-- -----------------------------------------------------Navbar2 --------------------->
 
 
     <nav id="sidebar2">
-        <div class="p-4 pt-5">
+        <div class="p-4 pt-2">
             
+            <div class="d-flex justify-content-end align-items-top">
+                <a href="/logout" class="btn btn-sm btn-danger mb-5">Logout</a>
+                    </div>
             <ul class="list-unstyled components mb-5">
                 <div class="mb-5">
                     <form action="/profiles/search" class="subscribe-form" method="post">
@@ -144,11 +117,12 @@
                 </div>
                 
                 <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-start font-weight-bold"><img src="{{url_for('static', filename='')}}" class="img rounded-circle mx-4" /><div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
+                    <a href="#" class="text-dark d-flex justify-content-start align-items-center font-weight-bold"><img class="img-thumbnail mx-4 rounded-circle profilepic-icon" src='{{url_for("static", filename="{}".format(userinfo.profilepic))}}' />
+                        <div class="d-block">{{userinfo.first_name}} {{userinfo.last_name}}</div> </a>
                     </div >
 
                 
-            <div class="mb-5  p-4 border rounded border-5">
+            <div class="mb-5  p-4 border border-primary rounded border-5">
                 <h5>Friends</h5>
                 <div class="">
                     <div class="my-4">
@@ -166,7 +140,7 @@
                     <form action="#" class="colorlib-subscribe-form">
                         <div class="form-group d-flex">
                             <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="button" id="friendButton" class="form-control" id="friendButton" value="All Friends" />
+                            <input type="button" class="form-control" id="friendButton" value="All Friends" />
                         </div>
                     </form>
                 </div>
