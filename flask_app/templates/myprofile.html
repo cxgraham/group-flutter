@@ -41,7 +41,7 @@
                             <a href="/homepage"><i class="bi bi-house-fill p-3"></i> Home</a>
                         </li> 
                     <li>
-                        <a href="#"><i class="bi bi-card-heading p-3"></i> Posts</a>
+                        <a href="/myprofile"><i class="bi bi-card-heading p-3"></i> Posts</a>
                     </li>
                     <li class="d-inline">
                         </i> <a href="#"><i class="bi bi-people-fill p-3"></i> Friends</a>
@@ -73,29 +73,29 @@
         </nav>
 
         <!-- ----------------------Page Content --------------------------- -->
-        <div id="content" class="p-5 p-md-5 pt-5 text-dark ml-4 ">
-            <h2 class="mb-5 p-2 text-center">Your Profile</h2>
-            <div class="container p-5 border border-primary">
-                <div class="my-3"><span class="font-weight-bold">Username:</span> {{userinfo.username}}</div>
-                <div class="my-3"><span class="font-weight-bold">Name:</span> {{userinfo.first_name}} {{userinfo.last_name}}</div>
-                <div class="my-3"><span class="font-weight-bold">Birthday:</span> {{userinfo.birthday}}</div>
-                <div class="my-3"><span class="font-weight-bold">Bio:</span> </p>{{userinfo.bio}}</div>
-                
+        <div class="profile">
+            <div id="content" class="p-5 p-md-5 pt-5 text-dark ml-4 ">
+                <h2 class="mb-5 p-2 text-center">Your Profile</h2>
+                <div class="container p-5 border border-primary">
+                    <div class="my-3"><span class="font-weight-bold">Username:</span> {{userinfo.username}}</div>
+                    <div class="my-3"><span class="font-weight-bold">Name:</span> {{userinfo.first_name}} {{userinfo.last_name}}</div>
+                    <div class="my-3"><span class="font-weight-bold">Birthday:</span> {{userinfo.birthday}}</div>
+                    <div class="my-3"><span class="font-weight-bold">Bio:</span> </p>{{userinfo.bio}}</div>
+                    
+                </div>
+                <div class="mx-auto text-center p-3">
+                    <a href="/editprofile" id="editButton" class="btn">Edit Profile</a>
+                </div>
             </div>
-            <div class="mx-auto text-center p-3">
-                <a href="/editprofile" id="editButton" class="btn">Edit Profile</a>
+            <div class="users_posts">
+                <h2>Your Created Posts:</h2>
+                {% for post in createdposts %}
+                    <h4>{{post.content}}</h4>
+                    <a href="/posts/edit/{{post.id}}">Edit</a> |
+                    <a href="/posts/delete/{{post.id}}">Delete</a>
+                {% endfor %}
             </div>
         </div>
-        <div>
-            <h2>Your Created Posts</h2>
-            {% for post in createdposts %}
-                <h3>{{post.name}}</h3>
-                <p>{{post.content}}</p>
-                <a href="/posts/edit/{{post.id}}">Edit</a> |
-                <a href="/posts/delete/{{post.id}}">Delete</a>
-            {% endfor %}
-        </div>
-    
 <!-- -----------------------------------------------------Navbar2 --------------------->
 
 
