@@ -29,7 +29,9 @@ def add_post():
 @app.route('/posts/edit/<int:id>')
 def edit_post(id):
     this_post = post.Post.get_post_by_id(id)
-    return render_template('edit_post.html', this_post = this_post)
+    data = {'user_id' : session['user_id']}
+    userinfo = profile.Profile.get_profile_by_id(data)
+    return render_template('edit_post.html', this_post = this_post, userinfo = userinfo)
 
 
 # UPDATE 

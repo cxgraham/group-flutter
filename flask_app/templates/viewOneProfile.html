@@ -84,9 +84,11 @@
                 <div class="my-3"><span class="font-weight-bold ml-4">Bio: </span> {{profileinfo.bio}}</div>
                 
             </div>
-            <div class="mx-auto text-center p-3">
-                <a href="/editprofile" id="editButton" class="btn">Edit Profile</a>
-            </div>
+            {% if session.user_id == profileinfo.user_id %}
+                <div class="mx-auto text-center p-3">
+                    <a href="/editprofile" id="editButton" class="btn">Edit Profile</a>
+                </div>
+            {% endif %}
         </div>
     
 <!-- -----------------------------------------------------Navbar2 --------------------->
