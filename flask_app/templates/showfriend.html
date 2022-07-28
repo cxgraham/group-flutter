@@ -48,7 +48,7 @@
                         <a href="#"><i class="bi bi-card-heading p-3"></i> Posts</a>
                     </li>
                     <li class="d-inline">
-                        </i> <a href="#"><i class="bi bi-people-fill p-3"></i> Friends</a>
+                        </i> <a href="/friends"><i class="bi bi-people-fill p-3"></i> Friends</a>
                     </li><li>
                         <a href="#"><i class="bi bi-bell-fill p-3"></i> Notifications</a>
                     </li><li>
@@ -77,14 +77,20 @@
         </nav>
 
             <!-- -----------------------------Page content ------------------------------>
-            <div class="col-sm-4 border rounded my-5 mx-auto pt-2 main-bg-color">
-                <h2 class="text-center mt-3 mb-4">User</h2>
-                <div>
-                    {% for u in user.profile %}
-                        {{u.first_name}} {{u.last_name}}
-                        {{u.username}}
-                    {% endfor %}
-                </div>
+            <div class="col-sm-4 border rounded my-5 mx-auto pt-2">
+                {% for u in user.profile %}
+                    <div class="head-friend">
+                        <div>{{u.profilepic}}</div>
+                        <h2 class="mt-3 mb-4">{{u.username}}</h2>
+                    </div>
+                    <div>
+                            <h5>{{u.first_name}} {{u.last_name}}</h5>
+                            <p>{{u.bio}}</p>
+                            <div>
+                                <button class="btn btn-primary">Follow</button>
+                            </div>
+                    </div>
+                {% endfor %}
             </div>
         
         <!-- -----------------------------------------------------Navbar2--------------------------- -->
@@ -106,27 +112,19 @@
                 </div>
 
                 
-            <div class="mb-5  p-4 border rounded border-5">
-                <h5>Friends</h5>
-                <div class="">
-                    <div class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-between font-weight-bold">Christian <img src="{{url_for('static', filename='')}}" class="img rounded-circle" /></a>
-                    </div >
-                    <div  class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-between font-weight-bold">Tony <img src="{{url_for('static', filename='')}}" class="img rounded-circle" /></a>
-                    </div>
-                    <div  class="my-4">
-                    <a href="#" class="text-dark d-flex justify-content-between font-weight-bold">Cameron <img src="{{url_for('static', filename='')}}" class="img rounded-circle" /></a>
-                    </div>
-                </div>
-                <div class="mt-5 mb-3">
-                    
-                    <form action="#" class="colorlib-subscribe-form">
-                        <div class="form-group d-flex">
-                            <div class="icon"><span class="icon-paper-plane"></span></div>
-                            <input type="button" id="friendButton" class="form-control" id="friendButton" value="All Friends" />
+                <div class="mb-5  p-4 border rounded border-5">
+                    <h5>Friends</h5>
+                        {% for friend in friends.profiles %}
+                            <div class="">
+                                <div class="my-4">
+                                <a href="/friends/{{friend.id}}" class="text-dark d-flex justify-content-between font-weight-bold">{{friend.first_name}} <img src="{{url_for('static', filename='{{friend.profilepic}}')}}" class="img rounded-circle" /></a>
+                                </div >
+                            </div>
+                        {% endfor %}
+                        <div class="mt-5 mb-3">
+                            <a href="/friends" type="button" id="friendButton" class="form-control" id="friendButton">Find Friends</a>
+                            
                         </div>
-                    </form>
                 </div>
             </div>
             

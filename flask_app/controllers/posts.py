@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, request, redirect, session, flash
-from flask_app.models import user, profile, post
+from flask_app.models import user, profile, post, friend
 
 # CREATE
 # Sam - Added create post rout 
@@ -12,7 +12,7 @@ def create_post():
     data = {'user_id' : session['user_id']}
     userinfo = profile.Profile.get_profile_by_id(data)
     print(userinfo.id)
-    return render_template('createpost.html', profile_id = userinfo.id, userinfo=userinfo)
+    return render_template('createpost.html', profile_id = userinfo.id, userinfo=userinfo, friends=friend.Friend.get_all_friends(data))
 
 
 @app.route('/posts/create', methods = ['POST'])

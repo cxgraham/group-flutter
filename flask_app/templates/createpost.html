@@ -73,7 +73,7 @@
                         <a href="#"><i class="bi bi-card-heading p-3"></i> Posts</a>
                     </li>
                     <li class="d-inline">
-                        </i> <a href="#"><i class="bi bi-people-fill p-3"></i> Friends</a>
+                        </i> <a href="/friends"><i class="bi bi-people-fill p-3"></i> Friends</a>
                     </li>
                     <li>
                         <a href="#"><i class="bi bi-bell-fill p-3"></i> Notifications</a>
@@ -176,31 +176,21 @@
                     </div >
 
 
-                <div class="mb-5  p-4 border rounded border-5">
-                    <h5>Friends</h5>
-                    <div class="">
-                        <div class="my-4">
-                            <a href="#" class="text-dark d-flex justify-content-between font-weight-bold">Christian <img
-                                    src="{{url_for('static', filename='')}}" class="img rounded-circle" /></a>
-                        </div>
-                        <div class="my-4">
-                            <a href="#" class="text-dark d-flex justify-content-between font-weight-bold">Tony <img
-                                    src="{{url_for('static', filename='')}}" class="img rounded-circle" /></a>
-                        </div>
-                        <div class="my-4">
-                            <a href="#" class="text-dark d-flex justify-content-between font-weight-bold">Cameron <img
-                                    src="{{url_for('static', filename='')}}" class="img rounded-circle" /></a>
-                        </div>
+                    <div class="mb-5  p-4 border rounded border-5">
+                        <h5>Friends</h5>
+                            {% for friend in friends.profiles %}
+                                <div class="">
+                                    <div class="my-4">
+                                    <a href="/friends/{{friend.id}}" class="text-dark d-flex justify-content-between font-weight-bold">{{friend.first_name}} <img src="{{url_for('static', filename='{{friend.profilepic}}')}}" class="img rounded-circle" /></a>
+                                    </div >
+                                </div>
+                            {% endfor %}
+                            <div class="mt-5 mb-3">
+                                <a href="/friends" type="button" id="friendButton" class="form-control" id="friendButton">Find Friends</a>
+                                
+                            </div>
                     </div>
                     <div class="mt-5 mb-3">
-
-                        <form action="#" class="colorlib-subscribe-form">
-                            <div class="form-group d-flex">
-                                <div class="icon"><span class="icon-paper-plane"></span></div>
-                                <input type="button" id="friendButton" class="form-control" id="friendButton"
-                                    value="All Friends" />
-                            </div>
-                        </form>
                     </div>
                 </div>
 

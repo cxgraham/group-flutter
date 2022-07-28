@@ -6,6 +6,7 @@ bcrypt = Bcrypt(app)
 from flask_app.models.user import User
 from flask_app.models.register import Register
 from flask_app.models.profile import Profile
+from flask_app.models import friend
 
 
 @app.route('/') #main login page
@@ -63,7 +64,7 @@ def myprofile():
     data = {'user_id' : session['user_id']}
     userinfo = Profile.get_profile_by_id(data)
     print("@@@@@@@@@@", userinfo)
-    return render_template ('myprofile.html', userinfo =userinfo)
+    return render_template ('myprofile.html', userinfo =userinfo, friends=friend.Friend.get_all_friends(data))
 
 @app.route('/editprofile') #edit profile page
 def editprofile():
@@ -72,7 +73,7 @@ def editprofile():
         return redirect ('/')
     data = {'user_id' : session['user_id']}
     userinfo = Profile.get_profile_by_id(data)
-    return render_template ('editprofile.html', userinfo =userinfo)
+    return render_template ('editprofile.html', userinfo =userinfo,  friends=friend.Friend.get_all_friends(data))
 
 @app.route('/editmyprofile', methods = ['post']) #profile editing processing route
 def editmyprofile():

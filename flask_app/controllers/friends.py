@@ -20,7 +20,10 @@ def one_friend(id):
     data = {
         "id": id
     }
-    return render_template("showfriend.html", user = user.User.get_user_by_id(data))
+    data2 = {
+        "user_id" : session['user_id']
+    }
+    return render_template("showfriend.html", user=user.User.get_user_by_id(data), friends=friend.Friend.get_all_friends(data2))
 
 @app.route("/follow", methods=['POST'])
 def save_friendship():

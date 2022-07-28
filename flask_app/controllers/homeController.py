@@ -7,6 +7,7 @@ from flask_app.models.user import User
 from flask_app.models.register import Register
 from flask_app.models.profile import Profile
 from flask_app.models.post import Post
+from flask_app.models import friend
 
 
 @app.route('/homepage') #direct to main page, need to add user id to the url
@@ -18,4 +19,4 @@ def main():
     userinfo = Profile.get_profile_by_id(data) #userinfor can be changed to profile info if you want
     session['profile_id'] = session['user_id']
     allPosts = Post.get_all_posts()
-    return render_template ('homepage.html', userinfo=userinfo, allPosts=allPosts)
+    return render_template ('homepage.html', userinfo=userinfo, allPosts=allPosts, friends=friend.Friend.get_all_friends(data))
